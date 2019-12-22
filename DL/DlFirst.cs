@@ -8,7 +8,7 @@ using DO;
 
 namespace DL
 {
-    public sealed class DlFirst : IDL
+    sealed class DlFirst : IDL
     {
         static readonly DlFirst instance = new DlFirst();
         static DlFirst() { }

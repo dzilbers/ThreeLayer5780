@@ -7,19 +7,19 @@ using DL;
 
 namespace DlApi
 {
-    public static class DlFactory
-    {
-        public static IDL GetDl(string type)
-        {
-            switch (type)
-            {
-                case "data":
-                    return DlFirst.Instance;
-                case "xml":
-                    throw new ArgumentException("Not yet implemented");
-                default:
-                    throw new ArgumentException("Wrong DL type");
-            }
-        }
-    }
+    //public static class DlFactory
+    //{
+    //    public static IDL GetDl(string type)
+    //    {
+    //        switch (type)
+    //        {
+    //            case "data":
+    //                return DlFirst.Instance;
+    //            case "xml":
+    //                throw new ArgumentException("Not yet implemented");
+    //            default:
+    //                throw new ArgumentException("Wrong DL type");
+    //        }
+    //    }
+    //}
 }
