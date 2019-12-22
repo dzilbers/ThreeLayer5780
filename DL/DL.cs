@@ -8,12 +8,12 @@ using DO;
 
 namespace DL
 {
-    public sealed class DLFirst : IDL
+    public sealed class DlFirst : IDL
     {
-        static readonly DLFirst instance = new DLFirst();
-        static DLFirst() { }
-        DLFirst() { }
-        public static DLFirst Instance { get { return instance; } }
+        static readonly DlFirst instance = new DlFirst();
+        static DlFirst() { }
+        DlFirst() { }
+        public static DlFirst Instance { get { return instance; } }
 
         static Random rnd = new Random(DateTime.Now.Millisecond);
         public double GetTemparture(int day)

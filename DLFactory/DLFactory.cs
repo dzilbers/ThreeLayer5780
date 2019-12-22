@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DLAPI;
+using DL;
 
-namespace DLAPI
+namespace DlApi
 {
-    public static class DLFactory
+    public static class DlFactory
     {
-        public static IDL GetDL(string type)
+        public static IDL GetDl(string type)
         {
             switch (type)
             {
                 case "data":
-                    return DL.DLFirst.Instance;
+                    return DlFirst.Instance;
                 case "xml":
                     throw new ArgumentException("Not yet implemented");
                 default:

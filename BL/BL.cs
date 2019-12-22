@@ -9,9 +9,9 @@ using BO;
 
 namespace BL
 {
-    class BL : IBL
+    class BlImp1 : IBL
     {
-        readonly IDL dl = DlFactory.GetDL("data");
+        readonly IDL dl = DlFactory.GetDl("data");
 
         public Weather GetWeather(int day)
         {

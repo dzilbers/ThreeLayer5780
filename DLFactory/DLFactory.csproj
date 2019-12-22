@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DLFactory.cs" />
+    <Compile Include="DlFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,9 +49,9 @@
       <Project>{365acad3-9e58-4e96-b250-8b9dace0aab4}</Project>
       <Name>DLAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DL\DL.csproj">
+    <ProjectReference Include="..\DL\DlFirst.csproj">
       <Project>{80253fdd-4626-4731-ac2d-cf0bfe69ed63}</Project>
-      <Name>DL</Name>
+      <Name>DlFirst</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

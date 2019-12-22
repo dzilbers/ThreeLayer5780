@@ -10,7 +10,7 @@ namespace PLConsole
 {
     class Program
     {
-        static IBL bl = BlFactory.GetBL();
+        static IBL bl = BlFactory.GetBl();
 
         static void Main(string[] args)
         {

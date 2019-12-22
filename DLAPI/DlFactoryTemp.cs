@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using DlApi;
 
 namespace DlApi
 {
-    public static class DlFactory
+    public static class DlFactoryTemp
     {
-        public static IDL GetDL(string type)
+        public static IDL GetDl(string type)
         {
+
             Type dlType;
             switch (type)
             {
                 case "data":
-                    dlType = Type.GetType("DLFirst");
+                    Assembly asm = Assembly.Load(@"DlFirst");
+                    Console.WriteLine((from t in asm.GetTypes() select $"{t}; ").ToArray<string>());
+                    dlType = Type.GetType("DlFirst, DlFirst");
                     break;
                 case "xml":
                     throw new ArgumentException("Not yet implemented");
