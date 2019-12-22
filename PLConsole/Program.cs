@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLAPI;
+using BlApi;
+using BO;
 
 namespace PLConsole
 {
     class Program
     {
-        static IBL bl = BLFactory.BLFactory.GetBL();
+        static IBL bl = BlFactory.GetBL();
 
         static void Main(string[] args)
         {

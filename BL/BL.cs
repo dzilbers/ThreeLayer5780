@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLAPI;
-using DLAPI;
+using BlApi;
+using DlApi;
+using BO;
 
 namespace BL
 {
-    public class BL : IBL
+    class BL : IBL
     {
-        readonly IDL dl = DLFactory.DLFactory.GetDL("data");
+        readonly IDL dl = DlFactory.GetDL("data");
 
         public Weather GetWeather(int day)
         {

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace BlApi
 {
-    public interface IBL
+    public static class BlFactory
     {
-        Weather GetWeather(int day);
+        public static IBL GetBL()
+        {
+            return new BL.BL();
+        }
     }
 }

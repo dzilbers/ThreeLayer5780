@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DlFactory1.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindowDirection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

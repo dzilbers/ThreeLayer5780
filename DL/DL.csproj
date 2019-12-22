@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DLAPI\DLAPI.csproj">
+    <ProjectReference Include="..\DLAPI\DlApi.csproj">
       <Project>{365acad3-9e58-4e96-b250-8b9dace0aab4}</Project>
-      <Name>DLAPI</Name>
+      <Name>DlApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

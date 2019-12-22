@@ -45,10 +45,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLAPI\BLAPI.csproj">
-      <Project>{0b967b32-25f9-4610-a69c-0a3aab8443b6}</Project>
-      <Name>BLAPI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BL\BL.csproj">
       <Project>{d4d20849-6734-47f2-8768-8b2bb775ac69}</Project>
       <Name>BL</Name>
