@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BlApi;
 using BO;
 
-namespace PLConsole
+namespace PlConsole
 {
     class Program
     {

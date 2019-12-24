@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DlApi
+namespace DalApi
 {
-    public interface IDL
+    public interface IDal
     {
         double GetTemparture(int day);
         double GetWindDirection(int day);

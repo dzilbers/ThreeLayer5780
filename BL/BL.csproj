@@ -48,9 +48,9 @@
     <Compile Include="Weather.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DLAPI\DlApi.csproj">
+    <ProjectReference Include="..\DLAPI\DalApi.csproj">
       <Project>{365acad3-9e58-4e96-b250-8b9dace0aab4}</Project>
-      <Name>DlApi</Name>
+      <Name>DalApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

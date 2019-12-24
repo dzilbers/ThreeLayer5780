@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DlApi;
+using DalApi;
 using DO;
 
-namespace DL
+namespace Dal
 {
-    sealed class DlFirst : IDL
+    sealed class DalObject : IDal
     {
-        static readonly DlFirst instance = new DlFirst();
-        static DlFirst() { }
-        DlFirst() { }
-        public static DlFirst Instance { get { return instance; } }
+        static readonly DalObject instance = new DalObject();
+        static DalObject() { }
+        DalObject() { }
+        public static DalObject Instance { get { return instance; } }
 
         static Random rnd = new Random(DateTime.Now.Millisecond);
         public double GetTemparture(int day)

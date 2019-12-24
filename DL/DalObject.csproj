@@ -7,8 +7,8 @@
     <ProjectGuid>{80253FDD-4626-4731-AC2D-CF0BFE69ED63}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DlFirst</RootNamespace>
-    <AssemblyName>DlFirst</AssemblyName>
+    <RootNamespace>Dal</RootNamespace>
+    <AssemblyName>DalObject</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,13 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DlFirst.cs" />
+    <Compile Include="DalObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DLAPI\DlApi.csproj">
+    <ProjectReference Include="..\DLAPI\DalApi.csproj">
       <Project>{365acad3-9e58-4e96-b250-8b9dace0aab4}</Project>
-      <Name>DlApi</Name>
+      <Name>DalApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

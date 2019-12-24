@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlApi;
-using DlApi;
+using DalApi;
 using BO;
 
 namespace BL
 {
     class BlImp1 : IBL
     {
-        readonly IDL dl = DlFactory.GetDl("data");
+        readonly IDal dal = DalFactory.GetDal();
 
         public Weather GetWeather(int day)
         {
             Weather w = new Weather();
-            w.Feeling = (int)(dl.GetTemparture(day) + Math.Sin(dl.GetWindDirection(day)) * 5);
+            w.Feeling = (int)(dal.GetTemparture(day) + Math.Sin(dal.GetWindDirection(day)) * 5);
             return w;
         }
     }
