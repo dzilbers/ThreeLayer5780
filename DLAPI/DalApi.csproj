@@ -45,7 +45,7 @@
     <Compile Include="DalFactory.cs" />
     <Compile Include="IDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WindowDirection.cs" />
+    <Compile Include="WindDirection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

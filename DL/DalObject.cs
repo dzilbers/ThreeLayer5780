@@ -1,29 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DalApi;
 using DO;
+using Data;
 
 namespace Dal
 {
     sealed class DalObject : IDal
     {
-        static readonly DalObject instance = new DalObject();
-        static DalObject() { }
-        DalObject() { }
+        static Random rnd = new Random(DateTime.Now.Millisecond);
+        static readonly DalObject instance;
+        double temperature;
+
+        static DalObject() 
+        {
+            instance = new DalObject();
+        }
+        DalObject() {
+            temperature = rnd.NextDouble() * 50 - 10; 
+        }
         public static DalObject Instance { get { return instance; } }
 
-        static Random rnd = new Random(DateTime.Now.Millisecond);
+
         public double GetTemparture(int day)
         {
-            return rnd.NextDouble() * 60 - 10;
+            temperature += rnd.NextDouble() * 10 - 5;
+            return temperature;
         }
 
-        public double GetWindDirection(int day)
+        public WindDirection GetWindDirection(int day)
         {
-            return rnd.NextDouble() * 2 * Math.PI;
+            WindDirection direction = DataSource.directions.Find(d => true);
+            var directions = (WindDirections[])Enum.GetValues(typeof(WindDirections));
+            direction.direction = directions[rnd.Next(0, directions.Length)];
+
+            return direction.Clone();
         }
     }
 }
