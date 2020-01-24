@@ -16,7 +16,7 @@ namespace Dal
         Thread myThread;
         volatile bool stopFlag = false;
 
-        static DalObject() {}
+        static DalObject() { }
         DalObject()
         {
             lockDal = new bool?(false);
@@ -56,16 +56,20 @@ namespace Dal
             while (!stopFlag)
             {
                 try { Thread.Sleep(5000); } catch (ThreadInterruptedException ex) { }
-                if (stopFlag) break;
-                lock (lockDal)
+                if (!stopFlag)
                 {
-                    try
+                    lock (lockDal)
                     {
-                        Console.WriteLine("Thread begin processing");
-                        Thread.Sleep(5000);
-                        Console.WriteLine("Thread end processing");
+                        Thread.Sleep(1000); // non-critical part of work - at start
+                        try
+                        {
+                            Console.WriteLine("Thread begin processing");
+                            Thread.Sleep(3000); // do the critical work
+                            Console.WriteLine("Thread end processing");
+                        }
+                        catch (ThreadInterruptedException ex) { }
                     }
-                    catch (ThreadInterruptedException ex) { }
+                    Thread.Sleep(1000);  // non-critical part of work - at finish
                 }
             }
             Console.WriteLine("Thread finish");
