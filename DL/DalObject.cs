@@ -8,43 +8,21 @@ namespace Dal
 {
     sealed class DalObject : IDal
     {
+        public static DalObject Instance { get; } = new DalObject();
+
         static Random rnd = new Random(DateTime.Now.Millisecond);
-        static readonly DalObject instance;
         double temperature;
         object lockDal;
         Thread myThread;
         volatile bool stopFlag = false;
 
-        static DalObject()
-        {
-            instance = new DalObject();
-        }
+        static DalObject() {}
         DalObject()
         {
             lockDal = new bool?(false);
             temperature = rnd.NextDouble() * 50 - 10;
-            (myThread = new Thread(() =>
-            {
-                Console.WriteLine("Thread start");
-                while (!stopFlag)
-                {
-                    try { Thread.Sleep(5000); } catch (ThreadInterruptedException ex) { }
-                    lock (lockDal)
-                    {
-                        try {
-                            Console.WriteLine("Thread begin processing");
-                            Thread.Sleep(5000);
-                            Console.WriteLine("Thread end processing");
-                        }
-                        catch (ThreadInterruptedException ex) { }
-                    }
-                }
-                Console.WriteLine("Thread finish");
-            }
-            )).Start();
+            (myThread = new Thread(BackgroundAudit)).Start();
         }
-        public static DalObject Instance { get { return instance; } }
-
 
         public double GetTemparture(int day)
         {
@@ -70,6 +48,27 @@ namespace Dal
         {
             stopFlag = true;
             myThread.Interrupt();
+        }
+
+        void BackgroundAudit()
+        {
+            Console.WriteLine("Thread start");
+            while (!stopFlag)
+            {
+                try { Thread.Sleep(5000); } catch (ThreadInterruptedException ex) { }
+                if (stopFlag) break;
+                lock (lockDal)
+                {
+                    try
+                    {
+                        Console.WriteLine("Thread begin processing");
+                        Thread.Sleep(5000);
+                        Console.WriteLine("Thread end processing");
+                    }
+                    catch (ThreadInterruptedException ex) { }
+                }
+            }
+            Console.WriteLine("Thread finish");
         }
     }
 }
