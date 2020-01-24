@@ -10,5 +10,6 @@ namespace BlApi
     public interface IBL
     {
         Weather GetWeather(int day);
+        void Shutdown();
     }
 }

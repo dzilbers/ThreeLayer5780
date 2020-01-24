@@ -3,6 +3,7 @@ using BlApi;
 using DalApi;
 using BO;
 using DO;
+using System.Threading;
 
 namespace BL
 {
@@ -15,8 +16,18 @@ namespace BL
         public Weather GetWeather(int day)
         {
             Weather w = new Weather();
-            double feeling = dal.GetTemparture(day);
-            switch (dal.GetWindDirection(day).direction)
+            double feeling;
+            WindDirections dir;
+            object dalLock = dal.GetLock();
+            lock (dalLock)
+            {
+                Console.WriteLine("GetWeather begin");
+                Thread.Sleep(1000);
+                feeling = dal.GetTemparture(day);
+                dir = dal.GetWindDirection(day).direction;
+                Console.WriteLine("GetWeather end");
+            }
+            switch (dir)
             {
                 case WindDirections.S:
                     feeling += 2;
@@ -66,9 +77,13 @@ namespace BL
                     feeling += 1;
                     break;
             }
-
             w.Feeling = (int)feeling;
             return w;
+        }
+
+        public void Shutdown()
+        {
+            dal.Shutdown();
         }
     }
 }

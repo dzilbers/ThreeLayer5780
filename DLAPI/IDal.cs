@@ -6,5 +6,8 @@ namespace DalApi
     {
         double GetTemparture(int day);
         WindDirection GetWindDirection(int day);
+
+        object GetLock();
+        void Shutdown();
     }
 }

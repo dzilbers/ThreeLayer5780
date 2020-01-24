@@ -29,7 +29,7 @@ namespace DalApi
 
             try // Load concrete Dal implementation assembly
             {
-                Assembly asm = Assembly.Load(dalPackage);
+                Assembly.Load(dalPackage);
             }
             catch (Exception ex)
             {
