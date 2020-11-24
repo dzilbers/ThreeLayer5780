@@ -4,14 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{365ACAD3-9E58-4E96-B250-8B9DACE0AAB4}</ProjectGuid>
+    <ProjectGuid>{06CFE316-F54E-497D-A5F7-3224680E3A39}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DalApi</RootNamespace>
-    <AssemblyName>DalApi</AssemblyName>
+    <RootNamespace>DalFactory</RootNamespace>
+    <AssemblyName>DalFactory</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,10 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDal.cs" />
-    <Compile Include="IClonable.cs" />
+    <Compile Include="DalConfig.cs" />
+    <Compile Include="DalFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WindDirection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLAPI\DalApi.csproj">
+      <Project>{365acad3-9e58-4e96-b250-8b9dace0aab4}</Project>
+      <Name>DalApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DL\DalObject.csproj">
+      <Project>{80253fdd-4626-4731-ac2d-cf0bfe69ed63}</Project>
+      <Name>DalObject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,11 +6,11 @@ using System.Threading;
 
 namespace Dal
 {
-    sealed class DalObject : IDal
+    public sealed class DalObject : IDal
     {
+        static Random rnd = new Random(DateTime.Now.Millisecond);
         public static DalObject Instance { get; } = new DalObject();
 
-        static Random rnd = new Random(DateTime.Now.Millisecond);
         double temperature;
         object lockDal;
         Thread myThread;

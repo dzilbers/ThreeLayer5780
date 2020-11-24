@@ -23,31 +23,15 @@ namespace DalApi
         public static IDal GetDal()
         {
             string dalType = DalConfig.DalName;
-            string dalPackage = DalConfig.DalPackages[dalType];
-            if (dalPackage == null)
-                throw new DalConfigException($"Wrong DL type: {dalType}");
-
-            try // Load concrete Dal implementation assembly
+            switch (dalType)
             {
-                Assembly.Load(dalPackage);
+                case "data":
+                    return Dal.DalObject.Instance;
+                case "xml":
+                    throw new NotImplementedException();
+                default:
+                    throw new NotImplementedException($"Failed loading {dalType} DAL");
             }
-            catch (Exception ex)
-            {
-                throw new DalConfigException($"Failed loading {dalPackage}.dll", ex);
-            }
-
-            // Get concrete Dal implementation's class metadata object
-            Type type = Type.GetType($"Dal.{dalPackage}, {dalPackage}");
-            if (type == null)
-                throw new DalConfigException($"Class name is not the same as Assembly Name: {dalPackage}");
-
-            // Get concrete Dal implementation's Instance
-            IDal dal = (IDal)type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
-                .GetValue(null); // since it's a static property - no need for an object
-            if (dal == null)
-                throw new DalConfigException($"Class {dalPackage} is not a singleton");
-
-            return dal;
         }
     }
 }

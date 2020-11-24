@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +49,10 @@
     <Compile Include="Weather.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DalFactory\DalFactory.csproj">
+      <Project>{06cfe316-f54e-497d-a5f7-3224680e3a39}</Project>
+      <Name>DalFactory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DLAPI\DalApi.csproj">
       <Project>{365acad3-9e58-4e96-b250-8b9dace0aab4}</Project>
       <Name>DalApi</Name>
