@@ -42,10 +42,12 @@ namespace DalApi
                 throw new DalConfigException($"Class name is not the same as Assembly Name: {dalPackage}");
 
             // Get concrete Dal implementation's Instance
-            IDal dal = (IDal)type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
-                .GetValue(null); // since it's a static property - no need for an object
-            if (dal == null)
+            PropertyInfo instance = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
+            if (instance == null)
                 throw new DalConfigException($"Class {dalPackage} is not a singleton");
+            IDal dal = instance.GetValue(null) as IDal; // since it's a static property - no need for an object
+            if (dal == null)
+                throw new DalConfigException($"Class {dalPackage} instance is not initialized");
 
             return dal;
         }

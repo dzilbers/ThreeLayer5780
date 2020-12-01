@@ -11,7 +11,7 @@ namespace PlConsole
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
         static void Main(string[] args)
         {
-            bl = BlFactory.GetBl();
+            bl = BlFactory.GetBl(1);
             Console.Write("Please enter how many days back: ");
             int days = int.Parse(Console.ReadLine());
             for (int d = days; d >= 0; --d)

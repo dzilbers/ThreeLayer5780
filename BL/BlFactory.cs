@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlApi
 {
@@ -12,5 +8,19 @@ namespace BlApi
         {
             return new BL.BlImp1();
         }
+
+        public static IBL GetBl(int blType)
+        {
+            switch (blType)
+            {
+                case 1:
+                    return new BL.BlImp1();
+                case 2:
+                    return new BL.BlImp1(); // new BL.BlImp2()
+                default:
+                    throw new ArgumentException("Bad BL number");
+            }
+    }
+
     }
 }
