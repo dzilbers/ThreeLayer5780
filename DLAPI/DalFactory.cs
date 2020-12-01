@@ -54,20 +54,24 @@ namespace DalApi
 
             // *** Get concrete Dal implementation's Instance
             // Get property info for public static property named "Instance" (in the dal implementation class- taken above)
-            PropertyInfo instance = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
             // If the property is not found or it's not public or not static then it is not properly implemented
             // as a Singleton...
-            if (instance == null)
-                throw new DalConfigException($"Class {dalPackage} is not a singleton");
             // Get the value of the property Instance (get function is automatically called by the system)
             // Since the property is static - the object parameter is irrelevant for the GetValue() function and we can use null
-            IDal dal = instance.GetValue(null) as IDal;
-            // If the instance property is not initialized (i.e. it does not hold a real instance reference)...
-            if (dal == null)
-                throw new DalConfigException($"Class {dalPackage} instance is not initialized");
+            try
+            {
+                IDal dal = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static).GetValue(null) as IDal;
+                // If the instance property is not initialized (i.e. it does not hold a real instance reference)...
+                if (dal == null)
+                    throw new DalConfigException($"Class {dalPackage} instance is not initialized");
+                // now it looks like we have appropriate dal implementation instance :-)
+                return dal;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new DalConfigException($"Class {dalPackage} is not a singleton", ex);
+            }
 
-            // now it looks like we have appropriate dal implementation instance :-)
-            return dal;
         }
     }
 }

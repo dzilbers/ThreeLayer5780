@@ -8,16 +8,20 @@ namespace Dal
 {
     sealed class DalObject : IDal
     {
-        public static DalObject Instance { get; } = new DalObject();
+        static Random rnd = new Random();
+        #region singelton
+        static readonly DalObject instance = new DalObject();
+        static DalObject() { }
+        DalObject() => init();
+        public static DalObject Instance => instance;
+        #endregion
 
-        static Random rnd = new Random(DateTime.Now.Millisecond);
         double temperature;
         object lockDal;
         Thread myThread;
         volatile bool stopFlag = false;
 
-        static DalObject() { }
-        DalObject()
+        void init()
         {
             lockDal = new bool?(false);
             temperature = rnd.NextDouble() * 50 - 10;
@@ -52,10 +56,10 @@ namespace Dal
 
         void BackgroundAudit()
         {
-            Console.WriteLine("Thread start");
+            //Console.WriteLine("Thread start");
             while (!stopFlag)
             {
-                try { Thread.Sleep(5000); } catch (ThreadInterruptedException ex) { }
+                try { Thread.Sleep(2000); } catch (ThreadInterruptedException ex) { }
                 if (!stopFlag)
                 {
                     lock (lockDal)
@@ -63,16 +67,16 @@ namespace Dal
                         Thread.Sleep(1000); // non-critical part of work - at start
                         try
                         {
-                            Console.WriteLine("Thread begin processing");
-                            Thread.Sleep(3000); // do the critical work
-                            Console.WriteLine("Thread end processing");
+                            //Console.WriteLine("Thread begin processing");
+                            Thread.Sleep(1000); // do the critical work
+                            //Console.WriteLine("Thread end processing");
                         }
                         catch (ThreadInterruptedException ex) { }
                     }
                     Thread.Sleep(1000);  // non-critical part of work - at finish
                 }
             }
-            Console.WriteLine("Thread finish");
+            //Console.WriteLine("Thread finish");
         }
     }
 }

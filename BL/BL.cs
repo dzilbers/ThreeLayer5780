@@ -21,11 +21,11 @@ namespace BL
             object dalLock = dal.GetLock();
             lock (dalLock)
             {
-                Console.WriteLine("GetWeather begin");
+                //Console.WriteLine("GetWeather begin");
                 Thread.Sleep(1000);
                 feeling = dal.GetTemparture(day);
                 dir = dal.GetWindDirection(day).direction;
-                Console.WriteLine("GetWeather end");
+                //Console.WriteLine("GetWeather end");
             }
             switch (dir)
             {
