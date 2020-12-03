@@ -42,12 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL.cs" />
+    <Compile Include="DataPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimpleDAL\SimpleDAL.csproj">
+    <ProjectReference Include="..\SimpleDAL\Step1DAL.csproj">
       <Project>{add094c5-d24a-4f63-afe3-8ce52608cbfd}</Project>
-      <Name>SimpleDAL</Name>
+      <Name>Step1DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,7 +2,7 @@
 using BlApi;
 using BO;
 
-namespace PlConsole
+namespace PlCli
 {
     class Program
     {
