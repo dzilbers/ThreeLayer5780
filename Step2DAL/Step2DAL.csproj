@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="DAL.cs" />
     <Compile Include="Data.cs" />
-    <Compile Include="DS.cs" />
+    <Compile Include="DataSource.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

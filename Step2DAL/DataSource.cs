@@ -7,11 +7,11 @@ using DO;
 
 namespace DS
 {
-    class DS
+    class DataSource
     {
         internal List<Data> datas = new List<Data>();
         
-        internal DS()
+        internal DataSource()
         {
             datas.Add(new Data() { Id = 1, Name = "Reuven" });
             datas.Add(new Data() { Id = 2, Name = "Shim'on" });

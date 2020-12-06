@@ -8,9 +8,24 @@ using DalApi;
 
 namespace DAL
 {
-    public class DAL : IDAL
+    public sealed class DAL : IDAL
     {
-        DS.DS ds = new DS.DS();
+        #region Singleton
+        static readonly DAL instance = new DAL();
+        static DAL() { }
+        DAL() { }
+        public static DAL Instance => instance;
+        //{
+        //    get
+        //    {
+        //        if (instance == null)
+        //            instance = new DAL();
+        //        return instance;
+        //    }
+        //}
+        #endregion
+
+        DS.DataSource ds = new DS.DataSource();
         public int GetDataCount() => ds.datas.Count();
         public Data GetData(int id) => ds.datas[id];
         public IEnumerable<Data> GetDatas() => ds.datas;

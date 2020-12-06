@@ -9,7 +9,7 @@ namespace DAL
 {
     public class DAL
     {
-        DS.DS ds = new DS.DS();
+        DS.DataSource ds = new DS.DataSource();
         public int GetDataCount() => ds.datas.Count();
         public Data GetData(int id) => ds.datas[id];
         public IEnumerable<Data> GetDatas() => ds.datas;
