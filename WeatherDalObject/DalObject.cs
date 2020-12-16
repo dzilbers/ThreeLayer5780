@@ -1,7 +1,7 @@
 ﻿using System;
 using DalApi;
 using DO;
-using Data;
+using DS;
 using System.Threading;
 
 namespace Dal

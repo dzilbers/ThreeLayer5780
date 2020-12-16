@@ -1,7 +1,7 @@
 ﻿using DO;
 using System.Collections.Generic;
 
-namespace Data
+namespace DS
 {
     public static class DataSource
     {
